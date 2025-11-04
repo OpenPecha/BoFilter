@@ -42,34 +42,4 @@ def filter_tibetan_text_langid(input_dir: Path, output_dir: Path, threshold: flo
             except Exception as e:
                 print(f"Could not process file {file_path}. Error: {e}")
 
-if __name__ == '__main__':
-    # Setup dummy directories and files for demonstration
-    input_dir = Path("sample_input_langid")
-    output_dir = Path("sample_output_langid")
-    
-    if input_dir.exists():
-        shutil.rmtree(input_dir)
-    input_dir.mkdir()
 
-    if output_dir.exists():
-        shutil.rmtree(output_dir)
-
-    # Create a dummy Tibetan file
-    with (input_dir / "tibetan_file.txt").open('w', encoding='utf-8') as f:
-        f.write("བཀྲ་ཤིས་བདེ་ལེགས།\n")
-        f.write("Hello\n")
-        f.write("༄༅། །བོད་སྐད་ཀྱི་དཔེ་ཚུགས།\n")
-
-    # Create a dummy English file
-    with (input_dir / "english_file.txt").open('w', encoding='utf-8') as f:
-        f.write("This is a test.\n")
-        f.write("བཀྲ་ཤིས་བདེ་ལེགས།\n")
-        f.write("Hello, world!\n")
-
-    print("Running filter_tibetan_text_langid...")
-    filter_tibetan_text_langid(input_dir, output_dir)
-
-    # Clean up
-    shutil.rmtree(input_dir)
-    shutil.rmtree(output_dir)
-    print("Done.")
